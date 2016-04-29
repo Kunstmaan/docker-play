@@ -17,4 +17,4 @@ RUN apt-get update && \
 
 EXPOSE 9000
 
-CMD [ 'activator', 'run']
+CMD [ "activator", "~run"]
