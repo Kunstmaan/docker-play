@@ -1,5 +1,10 @@
 FROM ubuntu:xenial
 
+RUN mkdir /app
+WORKDIR /app
+
+ENV PATH $PATH:/activator-dist-1.3.10/bin/
+
 RUN apt-get update && \
     apt-get -y -qq upgrade && \
     apt-get -y -qq install openjdk-8-jdk wget unzip && \
@@ -10,7 +15,6 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-ENV PATH $PATH:/activator-dist-1.3.10/bin/
+EXPOSE 9000
 
-RUN mkdir /app
-WORKDIR /app
+CMD [ 'activator', 'run']
